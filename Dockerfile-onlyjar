@@ -1,0 +1,13 @@
+# unique-attribute-validator-provider
+FROM openjdk:21-jdk-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y maven
+
+COPY unique-attribute-validator-provider/pom.xml .
+COPY unique-attribute-validator-provider/src ./src
+
+RUN mvn clean package
+RUN mkdir -p /result
+RUN cp /app/target/unique-attribute-validator-provider-*.jar /result/unique-attribute-validator-provider.jar

@@ -1,0 +1,15 @@
+services:
+  keycloak:
+    build:
+        context: .
+    container_name: unique-attribute-validator-provider
+    volumes:
+      - unique_attribute_provider:/result
+
+volumes:
+  unique_attribute_provider:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./volumes/data
